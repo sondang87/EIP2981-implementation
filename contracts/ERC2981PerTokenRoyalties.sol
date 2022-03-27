@@ -23,7 +23,7 @@ abstract contract ERC2981PerTokenRoyalties is ERC2981Base {
     }
 
     /// @inheritdoc	IERC2981Royalties
-    function royaltyInfo(uint256 tokenId, uint256 value)
+    function royaltyInfo(uint256 tokenId, uint256 salePrice)
         external
         view
         override
@@ -31,6 +31,6 @@ abstract contract ERC2981PerTokenRoyalties is ERC2981Base {
     {
         RoyaltyInfo memory royalties = _royalties[tokenId];
         receiver = royalties.recipient;
-        royaltyAmount = (value * royalties.amount) / 10000;
+        royaltyAmount = (salePrice * royalties.amount) / 10000;
     }
 }
